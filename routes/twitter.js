@@ -29,7 +29,7 @@ router.get('/:action', function(req, res, next){
   if (action == 'timeline'){
     var username = req.query.username
     console.log(username)
-    var params = {user_name: 'nodejs'}
+    var params = {user_name: username}
     client.get('statuses/user_timeline', params, function(error, tweets, response) {
       if (error) {
         console.log('couldnt get any tweets')
@@ -41,9 +41,7 @@ router.get('/:action', function(req, res, next){
       }
       console.log('no error');
       console.log(tweets);
-      res.json({
-        results: tweets
-      })
+      res.json(tweets)
       return
     })
   }
