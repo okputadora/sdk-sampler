@@ -6,14 +6,23 @@ var router = express.Router()
 
 
 router.get('/', function(req, res, next){
+  var term = req.query.term
+  var location = req.query.location
   'use-strict';
+  console.log(location)
   client.search({
-    term:'Four Barrel Coffee',
-    location: 'san francisco, ca'
+    term: term,
+    location: location
   })
   .then(response => {
-    console.log(response.jsonBody.businesses[0].name);
-    res.json(response.jsonBody.businesses[0]);
+    response = response.jsonBody;
+    console.log(response.businesses[0].location)  
+    var content = {
+      title: term+ " in " +location,
+      data: response
+    }
+    // populate the yelp view with this content
+    res.render('yelp', content);
   })
   .catch(err => {
     console.log(err);
