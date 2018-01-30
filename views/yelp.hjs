@@ -8,10 +8,10 @@
   <body>
     <h1>{{title}}</h1>
     <!-- This is the syntax for looping through a list -->
-    this essentially says: for each business in the datase display
-    the name and the location
+    <!-- this essentially says: for each business in the datase display
+    the name and the location -->
     {{#data.businesses}}
-      <span>{{ name }}, {{ location.display_address}}</span>
+      <span>{{ name }}, {{ location.display_address}}, <img width='200' src={{image_url}}  /></span>
     {{/data.businesses}}
   </body>
 </html>

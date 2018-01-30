@@ -16,7 +16,7 @@ router.get('/', function(req, res, next){
   })
   .then(response => {
     response = response.jsonBody;
-    console.log(response.businesses[0].location)  
+    console.log(response.businesses[0])  
     var content = {
       title: term+ " in " +location,
       data: response
